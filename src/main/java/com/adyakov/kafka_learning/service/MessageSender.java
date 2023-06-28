@@ -20,8 +20,9 @@ public class MessageSender {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     public boolean sendMessage(String message){
+        log.info("Send message to topic {}", TOPIC_NAME);
         var future = kafkaTemplate.send(TOPIC_NAME, message);
-
+        log.info("Wait for response...");
         try {
             var result = future.get();
             log.info("Successfully send to \"{}\" with offset {} to partition {}",

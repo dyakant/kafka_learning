@@ -16,7 +16,10 @@ public class KafkaListeners {
     void listener(String data) {
         log.info("KafkaListener, receives: {}", data);
         log.info("Start processing...");
-        Thread.sleep(3000);
+        for (int i = 1; i <= 5; i++) {
+            Thread.sleep(1000);
+            System.out.println(i + " second");
+        }
         log.info("Stop processing");
     }
 }
